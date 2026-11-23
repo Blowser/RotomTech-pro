@@ -1,0 +1,95 @@
+<div class="container py-4">
+
+  <h1 class="titulo text-center mb-2">
+    Productos RotomTech
+  </h1>
+
+  <p class="contador text-center mb-4">
+    {{ productos.length }} productos encontrados
+  </p>
+
+  <div class="row g-4">
+
+    <div
+      class="col-12 col-md-6 col-lg-4 col-xl-3"
+      *ngFor="let producto of productos">
+
+      <div class="card h-100">
+
+        <img
+          src="https://placehold.co/400x250/2563eb/ffffff?text=RotomTech"
+          [alt]="producto.nombre"
+          class="imagen-producto">
+
+        <div class="contenido d-flex flex-column h-100">
+
+          <div class="mb-2">
+            <span class="categoria">
+              {{ producto.categoria }}
+            </span>
+          </div>
+
+          <h5 class="nombre">
+            {{ producto.nombre }}
+          </h5>
+
+          <div class="mt-auto">
+            <div class="precio-container">
+
+              <div *ngIf="producto.descuento > 0">
+
+                <div class="precio-descuento-row">
+
+                  <span class="precio-actual">
+
+                    ${{ (producto.precio * (1 - producto.descuento)) | number:'1.0-0' }}
+
+                  </span>
+
+                  <span class="badge bg-danger">
+
+                    {{ producto.descuento * 100 }}% OFF
+
+                  </span>
+
+                </div>
+
+                <div class="precio-original">
+
+                  ${{ producto.precio | number:'1.0-0' }}
+
+                </div>
+
+              </div>
+
+              <div *ngIf="producto.descuento <= 0">
+
+                <div class="precio-actual">
+
+                  ${{ producto.precio | number:'1.0-0' }}
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <a
+              class="btn btn-primary w-100"
+              [routerLink]="['/productos', producto.id]">
+
+              Ver detalle
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

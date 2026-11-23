@@ -1,0 +1,61 @@
+.card {
+
+    background: #151515;
+
+    border: 1px solid rgba(255, 106, 0, 0.25);
+
+    color: white;
+
+    box-shadow:
+        0 0 25px rgba(255, 106, 0, 0.10);
+
+}
+
+.card hr {
+
+    border-color: rgba(255,255,255,.15);
+
+}
+
+.form-control {
+
+    background: #222;
+
+    border: 1px solid #444;
+
+    color: white;
+
+}
+
+.form-control:focus {
+
+    background: #222;
+
+    color: white;
+
+    border-color: #ff6a00;
+
+    box-shadow:
+        0 0 8px rgba(255,106,0,.35);
+
+}
+
+.form-label {
+
+    color: #ddd;
+
+}
+
+.btn-primary {
+
+    background: #ff6a00;
+
+    border: none;
+
+}
+
+.btn-primary:hover {
+
+    background: #ff8124;
+
+}

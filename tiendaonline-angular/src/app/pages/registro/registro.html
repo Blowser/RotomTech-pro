@@ -1,0 +1,202 @@
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+
+      <div class="card shadow">
+
+        <div class="card-body p-4">
+
+          <h2 class="text-center mb-4">
+
+            ⚡ Crear Cuenta
+
+          </h2>
+
+          <p class="text-center text-secondary mb-4">
+
+            Los campos marcados con
+            <span class="text-danger">*</span>
+            son obligatorios.
+
+          </p>
+
+          <form (ngSubmit)="registrarse()">
+
+            <div class="mb-3">
+
+              <label class="form-label">
+
+                Nombre <span class="text-danger">*</span>
+
+              </label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="nombre"
+                [(ngModel)]="nombre"
+                placeholder="Tu nombre"
+                maxlength="100"
+                required>
+
+              <small class="text-secondary d-block mt-1">
+
+                Obligatorio. Máximo 100 caracteres.
+
+              </small>
+
+            </div>
+
+            <div class="mb-3">
+
+              <label class="form-label">
+
+                Correo electrónico <span class="text-danger">*</span>
+
+              </label>
+
+              <input
+                type="email"
+                class="form-control"
+                name="correo"
+                [(ngModel)]="correo"
+                placeholder="correo@ejemplo.cl"
+                required>
+
+              <small class="text-secondary d-block mt-1">
+
+                Obligatorio. Formato: correo@dominio.cl
+
+              </small>
+
+            </div>
+
+            <div class="mb-3">
+
+              <label class="form-label">
+
+                Contraseña <span class="text-danger">*</span>
+
+              </label>
+
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="password"
+                placeholder="********"
+                minlength="8"
+                maxlength="100"
+                required>
+
+              <small class="text-secondary d-block mt-1">
+
+                Obligatoria. Entre 8 y 100 caracteres.
+
+              </small>
+
+              <div
+                *ngIf="password && password.length < 8"
+                class="text-warning mt-1">
+
+                ⚠ La contraseña debe tener al menos 8 caracteres.
+
+              </div>
+
+            </div>
+
+            <div class="mb-3">
+
+              <label class="form-label">
+
+                Confirmar contraseña <span class="text-danger">*</span>
+
+              </label>
+
+              <input
+                type="password"
+                class="form-control"
+                name="confirmarPassword"
+                [(ngModel)]="confirmarPassword"
+                placeholder="********"
+                required>
+
+              <small class="text-secondary d-block mt-1">
+
+                Debe coincidir exactamente con la contraseña.
+
+              </small>
+
+              <div
+                *ngIf="
+                  confirmarPassword &&
+                  password !== confirmarPassword
+                "
+                class="text-danger mt-1">
+
+                ❌ Las contraseñas no coinciden.
+
+              </div>
+
+              <div
+                *ngIf="
+                  confirmarPassword &&
+                  password === confirmarPassword
+                "
+                class="text-success mt-1">
+
+                ✅ Las contraseñas coinciden.
+
+              </div>
+
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary w-100">
+
+              Crear cuenta
+
+            </button>
+
+          </form>
+
+          <div
+            *ngIf="mensajeError"
+            class="alert alert-danger mt-3">
+
+            {{ mensajeError }}
+
+          </div>
+
+          <hr>
+
+          <div class="text-center">
+
+            <p class="mb-0">
+
+              ¿Ya tienes cuenta?
+
+            </p>
+
+            <a
+              routerLink="/login"
+              class="text-warning">
+
+              Iniciar sesión
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

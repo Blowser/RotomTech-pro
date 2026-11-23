@@ -1,0 +1,105 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <div class="container">
+
+    <a class="navbar-brand" routerLink="/">
+      ⚡ RotomTech
+    </a>
+
+    <div class="navbar-nav ms-auto">
+
+      <a
+        class="nav-link"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+
+        Inicio
+
+      </a>
+
+      <a
+        class="nav-link"
+        routerLink="/productos"
+        routerLinkActive="active">
+
+        Catálogo
+
+      </a>
+
+      
+
+    <ng-container *ngIf="usuario; else menuInvitado">
+
+  <span class="nav-link text-warning">
+    👤 {{ usuario.nombre }}
+  </span>
+
+  <span class="nav-link text-secondary">
+    {{ usuario.rol }}
+  </span>
+  
+  <a
+  *ngIf="usuario?.rol === 'ADMIN'"
+  class="nav-link text-info"
+  routerLink="/admin">
+
+  👑 Panel Admin
+
+</a>
+
+  <a
+    class="nav-link text-danger"
+    href="#"
+    (click)="cerrarSesion()">
+
+    Salir
+
+  </a>
+
+</ng-container>
+
+  <ng-template #menuInvitado>
+
+    <a
+      class="nav-link"
+      routerLink="/login"
+      routerLinkActive="active">
+
+      Login
+
+    </a>
+
+    <a
+      class="nav-link"
+      routerLink="/registro"
+      routerLinkActive="active">
+
+      Registro
+
+    </a>
+
+  </ng-template>
+    </div>
+
+  </div>
+
+</nav>
+
+<router-outlet></router-outlet>
+
+<footer class="footer-rotom">
+
+  <div class="container text-center">
+
+    <p class="mb-1">
+      ⚡ RotomTech 2026, productos electrónicos para tu hogar
+    </p>
+
+    <small>
+      Tecnología para hogares inteligentes
+    </small>
+
+  </div>
+
+</footer>

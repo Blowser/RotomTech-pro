@@ -1,0 +1,258 @@
+<section class="hero-banner">
+
+  <div class="container text-center">
+
+    <h1 class="hero-title">
+      ⚡ RotomTech
+    </h1>
+
+    <p class="hero-subtitle">
+      Tecnología para hogares inteligentes
+    </p>
+
+    <p class="hero-description">
+      Seguridad, almacenamiento, hogar inteligente y electrodomésticos
+      en un solo lugar.
+    </p>
+
+    <a
+      routerLink="/productos"
+      class="btn btn-primary btn-lg mt-3">
+
+      Explorar catálogo
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<section class="container py-5">
+
+  <h2 class="titulo-seccion">
+    Categorías
+  </h2>
+
+  <div class="row g-4 mt-3">
+
+    <div class="col-md-6 col-lg-3">
+
+      <div
+        class="categoria-card"
+        [class.categoria-activa]="categoriaSeleccionada === 'SEGURIDAD'"
+        (click)="seleccionarCategoria('SEGURIDAD')">
+
+        <h3>🔒</h3>
+
+        <h5>Seguridad</h5>
+
+        <p>
+          Cámaras y cajas fuertes inteligentes.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+
+      <div
+        class="categoria-card"
+        [class.categoria-activa]="categoriaSeleccionada === 'ALMACENAMIENTO'"
+        (click)="seleccionarCategoria('ALMACENAMIENTO')">
+
+        <h3>💾</h3>
+
+        <h5>Almacenamiento</h5>
+
+        <p>
+          Pendrives y tarjetas de memoria.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+
+      <div
+        class="categoria-card"
+        [class.categoria-activa]="categoriaSeleccionada === 'HOGAR_INTELIGENTE'"
+        (click)="seleccionarCategoria('HOGAR_INTELIGENTE')">
+
+        <h3>🏠</h3>
+
+        <h5>Hogar Inteligente</h5>
+
+        <p>
+          Sensores, purificadores y automatización.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+
+      <div
+        class="categoria-card"
+        [class.categoria-activa]="categoriaSeleccionada === 'ELECTRODOMESTICOS'"
+        (click)="seleccionarCategoria('ELECTRODOMESTICOS')">
+
+        <h3>🧺</h3>
+
+        <h5>Electrodomésticos</h5>
+
+        <p>
+          Cocina, baño y jardín.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section class="container py-4">
+
+  <h2 class="titulo-seccion">
+
+    {{ categoriaSeleccionada.replace('_', ' ') }}
+
+  </h2>
+
+  <div class="d-flex justify-content-center flex-wrap gap-3 mt-4">
+
+    <button
+      *ngFor="let subcategoria of obtenerSubcategorias()"
+      class="btn btn-outline-info"
+      (click)="seleccionarSubcategoria(subcategoria)">
+
+      {{ subcategoria }}
+
+    </button>
+
+  </div>
+
+</section>
+
+<section
+  class="container py-5"
+  *ngIf="productosFiltrados.length > 0">
+
+  <h2 class="titulo-seccion">
+
+    {{ subcategoriaSeleccionada }}
+
+  </h2>
+
+  <p class="text-center text-secondary mb-4">
+
+    {{ productosFiltrados.length }} productos encontrados
+
+  </p>
+
+  <div class="row g-4">
+
+    <div
+      class="col-12 col-md-6 col-lg-4 col-xl-3"
+      *ngFor="let producto of productosFiltrados">
+
+      <div class="card h-100">
+
+        <img
+          src="https://placehold.co/400x250/2563eb/ffffff?text=RotomTech"
+          [alt]="producto.nombre"
+          class="imagen-producto">
+
+        <div class="contenido d-flex flex-column h-100">
+
+          <div class="mb-2">
+
+            <span class="categoria">
+
+              {{ producto.categoria }}
+
+            </span>
+
+          </div>
+
+          <h5 class="nombre">
+
+            {{ producto.nombre }}
+
+          </h5>
+
+          <div class="mt-auto">
+
+            <div *ngIf="producto.descuento > 0">
+
+              <div class="precio-descuento-row">
+
+                <span class="precio-actual">
+
+                  ${{ (producto.precio * (1 - producto.descuento)) | number:'1.0-0' }}
+
+                </span>
+
+                <span class="badge bg-danger">
+
+                  {{ producto.descuento * 100 }}% OFF
+
+                </span>
+
+              </div>
+
+              <div class="precio-original">
+
+                ${{ producto.precio | number:'1.0-0' }}
+
+              </div>
+
+            </div>
+
+            <div *ngIf="producto.descuento <= 0">
+
+              <div class="precio-actual">
+
+                ${{ producto.precio | number:'1.0-0' }}
+
+              </div>
+
+            </div>
+
+            <a
+              class="btn btn-primary w-100"
+              [routerLink]="['/productos', producto.id]">
+
+              Ver detalle
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<section class="container py-5">
+
+  <h2 class="titulo-seccion">
+    🔥 Ofertas destacadas
+  </h2>
+
+  <p class="texto-seccion">
+    Descubre los productos con mayores descuentos de RotomTech.
+  </p>
+
+</section>

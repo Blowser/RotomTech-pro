@@ -1,0 +1,101 @@
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+
+      <div class="card shadow">
+
+        <div class="card-body p-4">
+
+          <h2 class="text-center mb-4">
+
+            ⚡ Iniciar Sesión
+
+          </h2>
+
+          <form (ngSubmit)="iniciarSesion()">
+
+            <div class="mb-3">
+
+              <label class="form-label">
+
+                Correo electrónico
+
+              </label>
+
+              <input
+                type="email"
+                class="form-control"
+                name="correo"
+                [(ngModel)]="correo"
+                placeholder="correo@ejemplo.cl"
+                required>
+
+            </div>
+
+            <div class="mb-3">
+
+              <label class="form-label">
+
+                Contraseña
+
+              </label>
+
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="password"
+                placeholder="********"
+                required>
+
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary w-100">
+
+              Ingresar
+
+            </button>
+
+          </form>
+
+          <div
+            *ngIf="mensajeError"
+            class="alert alert-danger mt-3">
+
+            {{ mensajeError }}
+
+          </div>
+
+          <hr>
+
+          <div class="text-center">
+
+            <p class="mb-0">
+
+              ¿No tienes cuenta?
+
+            </p>
+
+            <a
+              routerLink="/registro"
+              class="text-warning">
+
+              Registrarse
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

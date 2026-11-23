@@ -1,0 +1,108 @@
+<div
+  class="container py-5"
+  *ngIf="producto">
+
+  <div class="row">
+
+    <div class="col-md-6">
+
+      <img
+        [src]="producto.urlImagen"
+        [alt]="producto.nombre"
+        class="img-fluid rounded shadow">
+
+    </div>
+
+    <div class="col-md-6">
+
+      <span class="badge bg-primary mb-3">
+
+        {{ producto.categoria }}
+
+      </span>
+
+      <h1>
+
+        {{ producto.nombre }}
+
+      </h1>
+
+      <h5 class="text-secondary">
+
+        {{ producto.marca }}
+
+      </h5>
+
+      <hr>
+
+      <p>
+
+        {{ producto.descripcion }}
+
+      </p>
+
+      <p>
+
+        <strong>Subcategoría:</strong>
+
+        {{ producto.subcategoria }}
+
+      </p>
+
+      <p>
+
+        <strong>Stock:</strong>
+
+        {{ producto.stock }}
+
+      </p>
+
+      <div *ngIf="producto.descuento > 0">
+
+        <h2 class="text-success">
+
+          ${{ (producto.precio * (1 - producto.descuento)) | number:'1.0-0' }}
+
+        </h2>
+
+        <p class="text-decoration-line-through text-secondary">
+
+          ${{ producto.precio | number:'1.0-0' }}
+
+        </p>
+
+        <span class="badge bg-danger">
+
+          {{ producto.descuento * 100 }}% OFF
+
+        </span>
+
+      </div>
+
+      <div *ngIf="producto.descuento <= 0">
+
+        <h2 class="text-success">
+
+          ${{ producto.precio | number:'1.0-0' }}
+
+        </h2>
+
+      </div>
+
+      <div class="mt-4">
+
+        <a
+          routerLink="/productos"
+          class="btn btn-outline-secondary">
+
+          Volver al catálogo
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,76 @@
+.hero-banner {
+
+    padding: 100px 20px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(55,214,255,.15),
+            transparent 60%
+        );
+
+}
+
+.hero-title {
+
+    font-size: 4rem;
+
+    color: #ff6a00;
+
+    text-shadow:
+        0 0 20px rgba(255,106,0,.5);
+
+}
+
+.hero-subtitle {
+
+    font-size: 1.5rem;
+
+    color: #37d6ff;
+
+}
+
+.hero-description {
+
+    max-width: 700px;
+
+    margin: auto;
+
+    color: #ddd;
+
+}
+
+.categoria-card {
+
+    background: #1b1b1b;
+
+    border: 1px solid #2c2c2c;
+
+    border-radius: 16px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    transition: .2s;
+
+}
+
+.categoria-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 0 20px rgba(55,214,255,.25);
+
+}
+
+.titulo-seccion {
+
+    color: #ff6a00;
+
+    text-align: center;
+
+}
